@@ -4,7 +4,7 @@ on:
   pull_request:
   push:
     branches:
-      - main
+      - turkish
 
 env:
   CARGO_TERM_COLOR: always
