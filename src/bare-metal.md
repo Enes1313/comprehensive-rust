@@ -21,7 +21,7 @@ underneath us. This will be divided into several parts:
 For the microcontroller part of the course we will use the
 [BBC micro:bit](https://microbit.org/) v2 as an example. It's a
 [development board](https://tech.microbit.org/hardware/) based on the Nordic
-nRF51822 microcontroller with some LEDs and buttons, an I2C-connected
+nRF52833 microcontroller with some LEDs and buttons, an I2C-connected
 accelerometer and compass, and an on-board SWD debugger.
 
 To get started, install some tools we'll need later. On gLinux or Debian:
@@ -29,11 +29,12 @@ To get started, install some tools we'll need later. On gLinux or Debian:
 <!-- mdbook-xgettext: skip -->
 
 ```bash
-sudo apt install gcc-aarch64-linux-gnu gdb-multiarch libudev-dev picocom pkg-config qemu-system-arm
+sudo apt install gdb-multiarch libudev-dev picocom pkg-config qemu-system-arm
 rustup update
 rustup target add aarch64-unknown-none thumbv7em-none-eabihf
 rustup component add llvm-tools-preview
-cargo install cargo-binutils cargo-embed
+cargo install cargo-binutils
+curl --proto '=https' --tlsv1.2 -LsSf https://github.com/probe-rs/probe-rs/releases/latest/download/probe-rs-tools-installer.sh | sh
 ```
 
 And give users in the `plugdev` group access to the micro:bit programmer:
@@ -41,7 +42,7 @@ And give users in the `plugdev` group access to the micro:bit programmer:
 <!-- mdbook-xgettext: skip -->
 
 ```bash
-echo 'SUBSYSTEM=="usb", ATTR{idVendor}=="0d28", MODE="0664", GROUP="plugdev"' |\
+echo 'SUBSYSTEM=="hidraw", ATTRS{idVendor}=="0d28", MODE="0660", GROUP="logindev", TAG+="uaccess"' |\
   sudo tee /etc/udev/rules.d/50-microbit.rules
 sudo udevadm control --reload-rules
 ```
@@ -53,9 +54,9 @@ On MacOS:
 ```bash
 xcode-select --install
 brew install gdb picocom qemu
-brew install --cask gcc-aarch64-embedded
 rustup update
 rustup target add aarch64-unknown-none thumbv7em-none-eabihf
 rustup component add llvm-tools-preview
-cargo install cargo-binutils cargo-embed
+cargo install cargo-binutils
+curl --proto '=https' --tlsv1.2 -LsSf https://github.com/probe-rs/probe-rs/releases/latest/download/probe-rs-tools-installer.sh | sh
 ```

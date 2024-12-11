@@ -7,14 +7,14 @@ minutes: 8
 When working with generics, you often want to require the types to implement
 some trait, so that you can call this trait's methods.
 
-You can do this with `T: Trait` or `impl Trait`:
+You can do this with `T: Trait`:
 
 ```rust,editable
 fn duplicate<T: Clone>(a: T) -> (T, T) {
     (a.clone(), a.clone())
 }
 
-// struct NotClonable;
+// struct NotCloneable;
 
 fn main() {
     let foo = String::from("foo");
@@ -25,7 +25,7 @@ fn main() {
 
 <details>
 
-- Try making a `NonClonable` and passing it to `duplicate`.
+- Try making a `NonCloneable` and passing it to `duplicate`.
 
 - When multiple traits are necessary, use `+` to join them.
 
