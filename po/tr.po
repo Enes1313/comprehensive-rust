@@ -4193,10 +4193,6 @@ msgstr "\"transposed: {:#?}\""
 msgid "This segment should take about 55 minutes. It contains:"
 msgstr "Bu bölüm yaklaşık 55 dakika sürmelidir. İçerir:"
 
-#: src/references.md src/smart-pointers.md src/error-handling.md
-msgid "This segment should take about 55 minutes"
-msgstr ""
-
 #: src/references/shared.md
 msgid ""
 "A reference provides a way to access another value without taking ownership "
@@ -4535,153 +4531,6 @@ msgstr ""
 "değeri oluşturmanıza olanak tanır: `r\"\\n\" == \"\\\\n\"`. Dizenin içindeki "
 "çift tırnakları, dizeyi oluşturan tırnakların her iki tarafınaa eşit sayıda "
 "`#` karakteri koyarak görebilirsiniz:"
-
-#: src/references/slices.md
-msgid "Slices"
-msgstr "Dilimler (Slices)"
-
-#: src/references/slices.md
-msgid "A slice gives you a view into a larger collection:"
-msgstr ""
-
-#: src/references/slices.md
-msgid "Slices borrow data from the sliced type."
-msgstr ""
-
-#: src/references/slices.md
-msgid "Question: What happens if you modify `a[3]` right before printing `s`?"
-msgstr ""
-
-#: src/references/slices.md
-msgid ""
-"We create a slice by borrowing `a` and specifying the starting and ending "
-"indexes in brackets."
-msgstr ""
-
-#: src/references/slices.md
-msgid ""
-"If the slice starts at index 0, Rust’s range syntax allows us to drop the "
-"starting index, meaning that `&a[0..a.len()]` and `&a[..a.len()]` are "
-"identical."
-msgstr ""
-
-#: src/references/slices.md
-msgid ""
-"The same is true for the last index, so `&a[2..a.len()]` and `&a[2..]` are "
-"identical."
-msgstr ""
-
-#: src/references/slices.md
-msgid ""
-"To easily create a slice of the full array, we can therefore use `&a[..]`."
-msgstr ""
-
-#: src/references/slices.md
-msgid ""
-"`s` is a reference to a slice of `i32`s. Notice that the type of `s` "
-"(`&[i32]`) no longer mentions the array length. This allows us to perform "
-"computation on slices of different sizes."
-msgstr ""
-
-#: src/references/slices.md
-msgid ""
-"Slices always borrow from another object. In this example, `a` has to remain "
-"'alive' (in scope) for at least as long as our slice."
-msgstr ""
-
-#: src/references/slices.md
-msgid ""
-"The question about modifying `a[3]` can spark an interesting discussion, but "
-"the answer is that for memory safety reasons you cannot do it through `a` at "
-"this point in the execution, but you can read the data from both `a` and `s` "
-"safely. It works before you created the slice, and again after the "
-"`println`, when the slice is no longer used."
-msgstr ""
-
-#: src/references/strings.md
-msgid "We can now understand the two string types in Rust:"
-msgstr ""
-
-#: src/references/strings.md
-msgid "`&str` is a slice of UTF-8 encoded bytes, similar to `&[u8]`."
-msgstr ""
-
-#: src/references/strings.md
-msgid "`String` is an owned, heap-allocated buffer of UTF-8 bytes."
-msgstr ""
-
-#: src/references/strings.md src/std-traits/read-and-write.md
-msgid "\"World\""
-msgstr "\"Dünya\""
-
-#: src/references/strings.md
-msgid "\"s1: {s1}\""
-msgstr ""
-
-#: src/references/strings.md
-msgid "\"Hello \""
-msgstr "\"Merhaba \""
-
-#: src/references/strings.md src/memory-management/move.md
-msgid "\"s2: {s2}\""
-msgstr ""
-
-#: src/references/strings.md
-msgid "\"s3: {s3}\""
-msgstr ""
-
-#: src/references/strings.md
-msgid ""
-"`&str` introduces a string slice, which is an immutable reference to UTF-8 "
-"encoded string data stored in a block of memory. String literals "
-"(`\"Hello\"`), are stored in the program’s binary."
-msgstr ""
-
-#: src/references/strings.md
-msgid ""
-"Rust's `String` type is a wrapper around a vector of bytes. As with a "
-"`Vec<T>`, it is owned."
-msgstr ""
-
-#: src/references/strings.md
-msgid ""
-"As with many other types `String::from()` creates a string from a string "
-"literal; `String::new()` creates a new empty string, to which string data "
-"can be added using the `push()` and `push_str()` methods."
-msgstr ""
-
-#: src/references/strings.md
-msgid ""
-"The `format!()` macro is a convenient way to generate an owned string from "
-"dynamic values. It accepts the same format specification as `println!()`."
-msgstr ""
-
-#: src/references/strings.md
-msgid ""
-"You can borrow `&str` slices from `String` via `&` and optionally range "
-"selection. If you select a byte range that is not aligned to character "
-"boundaries, the expression will panic. The `chars` iterator iterates over "
-"characters and is preferred over trying to get character boundaries right."
-msgstr ""
-
-#: src/references/strings.md
-msgid ""
-"For C++ programmers: think of `&str` as `std::string_view` from C++, but the "
-"one that always points to a valid string in memory. Rust `String` is a rough "
-"equivalent of `std::string` from C++ (main difference: it can only contain "
-"UTF-8 encoded bytes and will never use a small-string optimization)."
-msgstr ""
-
-#: src/references/strings.md
-msgid "Byte strings literals allow you to create a `&[u8]` value directly:"
-msgstr ""
-
-#: src/references/strings.md
-msgid ""
-"Raw strings allow you to create a `&str` value with escapes disabled: "
-"`r\"\\n\" == \"\\\\n\"`. You can embed double-quotes by using an equal "
-"amount of `#` on either side of the quotes:"
-msgstr ""
 
 #: src/references/exercise.md
 msgid ""
@@ -5157,38 +5006,6 @@ msgid "Thread-local data can be created with the macro `std::thread_local`."
 msgstr ""
 "İş parçacığı için yerel (thread-local) veriler `std::thread_local` makrosu "
 "ile oluşturulabilir."
-
-#: src/user-defined-types/const.md
-msgid "`const`"
-msgstr ""
-
-#: src/user-defined-types/const.md
-msgid ""
-"Constants are evaluated at compile time and their values are inlined "
-"wherever they are used:"
-msgstr ""
-
-#: src/user-defined-types/const.md
-msgid ""
-"According to the [Rust RFC Book](https://rust-lang.github.io/rfcs/0246-const-"
-"vs-static.html) these are inlined upon use."
-msgstr ""
-
-#: src/user-defined-types/const.md
-msgid ""
-"Only functions marked `const` can be called at compile time to generate "
-"`const` values. `const` functions can however be called at runtime."
-msgstr ""
-
-#: src/user-defined-types/const.md
-msgid "Mention that `const` behaves semantically similar to C++'s `constexpr`"
-msgstr ""
-
-#: src/user-defined-types/const.md
-msgid ""
-"It isn't super common that one would need a runtime evaluated constant, but "
-"it is helpful and safer than using a static."
-msgstr ""
 
 #: src/user-defined-types/aliases.md
 msgid ""
@@ -9334,10 +9151,6 @@ msgstr "IntoIterator"
 msgid "FromIterator"
 msgstr "FromIterator"
 
-#: src/iterators.md src/testing.md
-msgid "This segment should take about 45 minutes"
-msgstr "Bu bölüm yaklaşık 45 dakika sürecektir"
-
 #: src/iterators/iterator.md
 msgid ""
 "The [`Iterator`](https://doc.rust-lang.org/std/iter/trait.Iterator.html) "
@@ -10178,13 +9991,6 @@ msgstr "Error Özelliği (Trait)"
 #: src/error-handling.md
 msgid "thiserror"
 msgstr ""
-
-#: src/welcome-day-4-afternoon.md
-msgid ""
-"Including 10 minute breaks, this session should take about 2 hours and 10 "
-"minutes"
-msgstr ""
-"Bu oturum 10 dakikalık aralar dahil yaklaşık 2 saat 10 dakika sürecektir"
 
 #: src/error-handling.md
 msgid "anyhow"
