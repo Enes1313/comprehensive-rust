@@ -203,7 +203,7 @@ msgstr "Referanslar"
 
 #: src/SUMMARY.md src/references.md src/references/shared.md
 msgid "Shared References"
-msgstr "Paylaşılan Referanslar"
+msgstr "Paylaşılan (Shared) Referanslar"
 
 #: src/SUMMARY.md src/references.md src/references/exclusive.md
 msgid "Exclusive References"
@@ -233,7 +233,7 @@ msgstr "Kullanıcı Tanımlı Türler"
 #: src/SUMMARY.md src/user-defined-types.md
 #: src/user-defined-types/named-structs.md
 msgid "Named Structs"
-msgstr "İsimli Yapılar"
+msgstr "İsimli Yapılar (Named Structs)"
 
 #: src/SUMMARY.md src/user-defined-types.md
 #: src/user-defined-types/tuple-structs.md
@@ -343,11 +343,11 @@ msgstr "Alıştırma: Genel Kaydedici"
 #: src/SUMMARY.md src/running-the-course/course-structure.md
 #: src/welcome-day-2.md src/generics.md
 msgid "Generics"
-msgstr "Jenerikler"
+msgstr "Genelleştirmeler (Generics)"
 
 #: src/SUMMARY.md src/generics.md src/generics/generic-functions.md
 msgid "Generic Functions"
-msgstr "Jenerik Fonksiyonlar"
+msgstr "Genelleştirilmiş (Generic) Fonksiyonlar"
 
 #: src/SUMMARY.md src/generics.md src/generics/trait-bounds.md
 msgid "Trait Bounds"
@@ -355,11 +355,11 @@ msgstr "Özellik (Trait) Sınırları"
 
 #: src/SUMMARY.md src/generics.md src/generics/generic-data.md
 msgid "Generic Data Types"
-msgstr "Jenerik Veri Türleri"
+msgstr "Genelleştirilmiş (Generic) Veri Türleri"
 
 #: src/SUMMARY.md src/generics/generic-traits.md
 msgid "Generic Traits"
-msgstr "Jenerik Özellikler (Traits)"
+msgstr "Genelleştirilmiş (Generic) Özellikler (Traits)"
 
 #: src/SUMMARY.md src/generics/impl-trait.md
 msgid "`impl Trait`"
@@ -371,7 +371,7 @@ msgstr "`dyn Trait`"
 
 #: src/SUMMARY.md src/generics/exercise.md
 msgid "Exercise: Generic `min`"
-msgstr "Alıştırma: Jenerik `min`"
+msgstr "Alıştırma: Genelleştirilmiş (Generic) `min`"
 
 #: src/SUMMARY.md
 msgid "Day 2: Afternoon"
@@ -1459,8 +1459,8 @@ msgid ""
 "topics like generics and error handling."
 msgstr ""
 "Bu, Google'daki Android ekibi tarafından geliştirilen ücretsiz bir Rust "
-"kursudur. Kurs, temel sözdiziminden jenerikler ve hata işleme gibi ileri "
-"düzey konulara kadar Rust'ın tüm yelpazesini kapsar."
+"kursudur. Kurs, temel sözdiziminden genelleştirmeler (generics) ve hata "
+"işleme gibi ileri düzey konulara kadar Rust'ın tüm yelpazesini kapsar."
 
 #: src/index.md
 msgid ""
@@ -2998,7 +2998,7 @@ msgstr "Numaralandırmalar (Enums) ve desen eşleştirme."
 
 #: src/hello-world/benefits.md
 msgid "Generics."
-msgstr "Jenerikler."
+msgstr "Genelleştirmeler (Generics)."
 
 #: src/hello-world/benefits.md
 msgid "No overhead FFI."
@@ -3971,8 +3971,8 @@ msgid ""
 "Always takes a single set of parameter types. These types can be generic, "
 "which will be covered later."
 msgstr ""
-"Her zaman tek bir parametre türü kümesi alır. Bu türler jenerik (generic) "
-"olabilir, bu konuya daha sonra değinilecektir."
+"Her zaman tek bir parametre türü kümesi alır. Bu türler genelleştirilmiş "
+"(generic) olabilir, bu konuya daha sonra değinilecektir."
 
 #: src/control-flow-basics/macros.md
 msgid ""
@@ -4296,8 +4296,8 @@ msgstr ""
 #: src/tuples-and-arrays/iteration.md
 msgid "The `for` statement supports iterating over arrays (but not tuples)."
 msgstr ""
-"'for' deyimi diziler üzerinde adımlamayı/dolaşmayı destekler (ancak demetler "
-"(tuples) üzerinde desteklemez)."
+"'for' deyimi (statement) diziler üzerinde adımlamayı/dolaşmayı destekler "
+"(ancak demetler (tuples) üzerinde desteklemez)."
 
 #: src/tuples-and-arrays/iteration.md
 msgid ""
@@ -4323,7 +4323,7 @@ msgid ""
 "Rust supports using pattern matching to destructure a larger value like a "
 "tuple into its constituent parts:"
 msgstr ""
-"Rust, bir tuple gibi daha büyük bir değeri, onu oluşturan parçalara "
+"Rust, bir demet (tuple) gibi daha büyük bir değeri, onu oluşturan parçalara "
 "çözümlemek (destructure) için desen eşleştirmeyi (pattern matching) "
 "kullanmayı destekler:"
 
@@ -4345,9 +4345,9 @@ msgid ""
 "statically verify that the value on the right of `=` has the same structure "
 "as the pattern."
 msgstr ""
-"Burada kullanılan desenler \"reddedilemez (irrefutable)\"dir, yani derleyici "
-"`=` sağındaki değerin desenle aynı yapıya sahip olduğunu statik olarak "
-"doğrulayabilir."
+"Burada kullanılan desenler (patterns) \"reddedilemez (irrefutable)\"dir, "
+"yani derleyici `=` sağındaki değerin desenle aynı yapıya sahip olduğunu "
+"statik olarak doğrulayabilir."
 
 #: src/tuples-and-arrays/destructuring.md
 msgid ""
@@ -4390,8 +4390,8 @@ msgid ""
 "Use an array such as the above to write a function `transpose` which will "
 "transpose a matrix (turn rows into columns):"
 msgstr ""
-"Bir matrisin devrini yapacak (satırları sütunlara çevirecek) `transpose` "
-"fonksiyonu yazmak için yukarıdaki gibi bir dizi kullanın:"
+"Bir matrisin devrini (transpose) yapacak (satırları sütunlara çevirecek) "
+"`transpose` fonksiyonu yazmak için yukarıdaki gibi bir dizi kullanın:"
 
 #: src/tuples-and-arrays/exercise.md
 msgid ""
@@ -4399,8 +4399,8 @@ msgid ""
 "function. This function only operates on 3x3 matrices."
 msgstr ""
 "Aşağıdaki kodu <https://play.rust-lang.org/> adresine kopyalayın ve "
-"fonksiyonu uygulayın (implement). Bu fonksiyon yalnızca 3x3'lük matrislerde "
-"çalışır."
+"fonksiyonu gerçekleştirin (implement). Bu fonksiyon yalnızca 3x3'lük "
+"matrislerde çalışır."
 
 #: src/tuples-and-arrays/exercise.md src/tuples-and-arrays/solution.md
 msgid "// <-- the comment makes rustfmt add a newline\n"
@@ -4468,9 +4468,9 @@ msgid ""
 "cover how Rust prevents the memory-safety bugs that come from using raw "
 "pointers."
 msgstr ""
-"Referanslar göstericiler (pointers) olarak uyarlanır/uygulanır (implement) "
-"ve önemli bir avantaj şudur ki, gösterdikleri şeyin boyutundan çok daha "
-"küçük olabilmeleridir. C veya C++'a aşina olan öğrenciler referansları "
+"Referanslar göstericiler (pointers) olarak gerçekleştirilir (implement) ve "
+"önemli bir avantaj şudur ki, gösterdikleri şeyin boyutundan çok daha küçük "
+"olabilmeleridir. C veya C++'a aşina olan öğrenciler referansları "
 "göstericiler olarak tanıyacaklardır. Kursun ilerleyen bölümlerinde Rust'ın, "
 "ham göstericilerin (raw pointers) kullanılmasından kaynaklanan bellek "
 "emniyeti hatalarını (memory-safety bugs) nasıl önlediği ele alınacaktır."
@@ -4482,7 +4482,7 @@ msgid ""
 msgstr ""
 "Açık bir şekilde (explicit) `&` ile referans vermek genellikle gereklidir. "
 "Ancak, Rust metotları çağırırken referans verme ve referanstan çıkarma "
-"işlemlerini otomatik olarak gerçekleştirir."
+"(dereferencing) işlemlerini otomatik olarak gerçekleştirir."
 
 #: src/references/shared.md
 msgid ""
@@ -4542,7 +4542,7 @@ msgid ""
 msgstr ""
 "Değiştirilebilir referanslar (mutable reference) olarak da bilinen özel "
 "(exclusive) referanslar, atıfta bulundukları (refer) değerin "
-"değiştirilmesine olanak tanır. `&mut T` türüne sahiplerdir."
+"değiştirilmesine olanak tanır. Aynı zamanda, `&mut T` türüne sahiplerdir."
 
 #: src/references/exclusive.md
 msgid ""
@@ -4955,9 +4955,9 @@ msgid ""
 "trait on some type but don’t have any data that you want to store in the "
 "value itself."
 msgstr ""
-"Sıfır boyutlu (zero-sized) yapılar (örn. `struct Foo;'), bir özelliği "
-"(trait) bazı türlere uygularken kullanılabilir, ancak değerin kendisinde "
-"saklamak istediğiniz herhangi bir veri yoktur."
+"Sıfır boyutlu (zero-sized) yapılar (örn. `struct Foo;`), bir özelliğin "
+"(trait) bazı türlere gerçekleştiriminde (implementing) kullanılabilir, ancak "
+"değer olarak kendisinde saklamak istenilen herhangi bir veri yoktur."
 
 #: src/user-defined-types/named-structs.md
 msgid ""
@@ -4965,7 +4965,7 @@ msgid ""
 "not important."
 msgstr ""
 "Sonraki slaytta alan adları (field names) önemli olmadığında kullanılan "
-"Demet (Tupe) yapıları tanıtılacaktır."
+"Demet (Tuple) yapıları tanıtılacaktır."
 
 #: src/user-defined-types/named-structs.md
 msgid ""
@@ -5079,7 +5079,7 @@ msgstr ""
 
 #: src/user-defined-types/tuple-structs.md
 msgid "Operator overloading is discussed on Day 3 (generics)."
-msgstr "Operatör yüklemesi 3. günde (jenerikler) tartışıldı."
+msgstr "Operatör yüklemesi 3. günde (genelleştirmeler(generics)) tartışıldı."
 
 #: src/user-defined-types/tuple-structs.md
 msgid ""
@@ -5097,7 +5097,7 @@ msgid ""
 "(imagine a `NullReader` that implements some reader behavior by always "
 "returning EOF)."
 msgstr ""
-"Bu, bazı davranışları uygulayıp verisi olmayan türler için yaygındır (her "
+"Bu, bazı davranışları uygulayan verisi olmayan türler için yaygındır (her "
 "zaman EOF döndüren bir `NullReader` hayal edin; okuma davranışını uygular "
 "ama veri içermez)."
 
@@ -5114,12 +5114,12 @@ msgid ""
 "The `enum` keyword allows the creation of a type which has a few different "
 "variants:"
 msgstr ""
-"'enum' anahtar sözcüğü birkaç farklı varyanta sahip bir türün yaratılmasına "
+"`enum` anahtar sözcüğü birkaç farklı varyanta sahip bir türün yaratılmasına "
 "olanak sağlar:"
 
 #: src/user-defined-types/enums.md
 msgid "// Simple variant\n"
-msgstr "// Basit (simple) varyant\n"
+msgstr "// Basit (Simple) varyant\n"
 
 #: src/user-defined-types/enums.md
 msgid "// Tuple variant\n"
@@ -5153,9 +5153,9 @@ msgid ""
 "Rust will store a discriminant so that it knows at runtime which variant is "
 "in a `PlayerMove` value."
 msgstr ""
-"`PlayerMove` üç varyantı olan bir türdür. Rust, varyant değerlerine (variant "
+"`PlayerMove` üç varyantı olan bir türdür. Rust, varyant ek yüküne (variant "
 "payloads) ek olarak, çalışma zamanında hangi varyantın `PlayerMove` "
-"değerinde olduğunu bilmesi için bir ayırıcı (discriminant) da depolayacaktır."
+"değerinde olduğunu bilmesi için bir ayırıcı (discriminant) da depolar."
 
 #: src/user-defined-types/enums.md
 msgid "This might be a good time to compare structs and enums:"
@@ -5169,7 +5169,7 @@ msgid ""
 "with different types of fields (variant payloads)."
 msgstr ""
 "Her ikisinde de, alanları olmayan basit bir versiyona (birim yapı) veya "
-"farklı alan türlerine sahip bir versiyona (varyant yükleri) sahip "
+"farklı alan türlerine sahip bir versiyona (varyant ek yükleri) sahip "
 "olabilirsiniz."
 
 #: src/user-defined-types/enums.md
@@ -5262,7 +5262,7 @@ msgid ""
 "creates a distinct type. Prefer `struct InventoryCount(usize)` to `type "
 "InventoryCount = usize`."
 msgstr ""
-"[Bir yeni tür deseni (newtype)](tuple-structs.html) genellikle farklı bir "
+"Bir [yeni tür (newtype)](tuple-structs.html) deseni genellikle farklı bir "
 "tür oluşturduğu için daha iyi bir seçenektir. `type InventoryCount = usize` "
 "yerine `struct InventoryCount(usize)`'ı tercih edin."
 
@@ -5315,7 +5315,7 @@ msgid ""
 "therefore will not move:"
 msgstr ""
 "Statik değişkenler programın tüm yürütmesi (execution) boyunca yaşayacak ve "
-"bu nedenle taşınmayacaklar:"
+"bu nedenle taşınmayacaklar (not move):"
 
 #: src/user-defined-types/static.md
 msgid "\"Welcome to RustOS 3.14\""
@@ -5336,22 +5336,24 @@ msgid ""
 msgstr ""
 "[Rust RFC Kitabında](https://rust-lang.github.io/rfcs/0246-const-vs-static."
 "html) belirtildiği gibi, statik kullanımı satır içi (inline) özelliği vermez "
-"ve gerçek bir ilişkili bellek konumuna sahiptir. Bu, emniyetsiz ve gömülü "
-"kod için yararlıdır ve değişken, program yürütmesinin tamamı boyunca yaşar. "
-"Global kapsamlı (globally-scoped) bir değerin nesne kimliğine ihtiyaç "
-"duyması için bir nedeni olmadığında, genellikle `const` tercih edilir."
+"ve gerçek bir ilişkili bellek konumuna sahiptir. Bu, emniyetsiz (unsafe) ve "
+"gömülü (embedded) kod için yararlıdır ve değişken, program yürütmesinin "
+"tamamı boyunca yaşar. Global kapsamlı (globally-scoped) bir değerin nesne "
+"kimliğine (object identity) ihtiyaç duyması için bir nedeni olmadığında, "
+"genellikle `const` tercih edilir."
 
 #: src/user-defined-types/static.md
 msgid "`static` is similar to mutable global variables in C++."
-msgstr "`statik`, C++'daki değişebilir olan global değişkenlere benzer."
+msgstr "`statik`, C++'daki değiştirilebilir olan global değişkenlere benzer."
 
 #: src/user-defined-types/static.md
 msgid ""
 "`static` provides object identity: an address in memory and state as "
 "required by types with interior mutability such as `Mutex<T>`."
 msgstr ""
-"`static`, `Mutex<T>` gibi iç değişebilirliğe sahip türlerin gerektirdiği "
-"şekilde bellekteki bir adres ve durumu nesneye kimlik olarak sağlar."
+"`static`, `Mutex<T>` gibi iç değişebilirliğe (interior mutability) sahip "
+"türlerin gerektirdiği şekilde bellekteki bir adres ve durumu nesneye kimlik "
+"olarak sağlar."
 
 #: src/user-defined-types/static.md
 msgid ""
@@ -5359,10 +5361,10 @@ msgid ""
 "`Sync`. Interior mutability is possible through a [`Mutex`](https://doc.rust-"
 "lang.org/std/sync/struct.Mutex.html), atomic or similar."
 msgstr ""
-"Çünkü `static` değişkenlere herhangi bir iş parçacığından "
+"Çünkü `static` değişkenlere herhangi bir iş parçacığından (thread) "
 "erişilebildiğinden, bunların `Sync` olması gerekir. İç değişebilirlik "
-"[`Mutex`](https://doc.rust-lang.org/std/sync/struct.Mutex.html), atomik veya "
-"benzer yöntemlerle mümkündür."
+"(Interior mutability) [`Mutex`](https://doc.rust-lang.org/std/sync/struct."
+"Mutex.html), atomik veya benzer yöntemlerle mümkündür."
 
 #: src/user-defined-types/static.md
 msgid ""
@@ -5389,8 +5391,8 @@ msgid ""
 msgstr ""
 "Bir asansör kontrol sistemindeki bir olayı temsil etmek için bir veri yapısı "
 "oluşturacağız. Çeşitli olayları yapılandırmak için türleri ve fonksiyonları "
-"tanımlamak size kalmış. Türlerin `{:?}` ile biçimlendirilmesine izin vermek "
-"için `#[derive(Debug)]` kullanın."
+"tanımlamak size kalmış. Türlerin `{:?}` ile biçimlendirilmesine (format) "
+"izin vermek için `#[derive(Debug)]` kullanın."
 
 #: src/user-defined-types/exercise.md
 msgid ""
@@ -5536,7 +5538,9 @@ msgstr ""
 
 #: src/welcome-day-2.md
 msgid "Generics: parameterizing types on other types."
-msgstr "Jenerikler: türleri diğer türler üzerinden parametrelendirme."
+msgstr ""
+"Genelleştirmeler (Generics): türleri diğer türler üzerinden "
+"parametrelendirme."
 
 #: src/welcome-day-2.md
 msgid ""
@@ -6420,9 +6424,9 @@ msgid ""
 "In the \"Generics\" segment, next, we will see how to build functionality "
 "that is generic over all types implementing a trait."
 msgstr ""
-"Bir sonraki \"Jenerikler\" bölümünde, bir özelliği (trait) gerçekleştiren "
-"tüm türler üzerinde jenerik olan fonksiyonelliğin nasıl oluşturulacağını "
-"göreceğiz."
+"Bir sonraki \"Genelleştirmeler (Generics)\" bölümünde, bir özelliği (trait) "
+"gerçekleştiren tüm türler üzerinde jenerik olan fonksiyonelliğin nasıl "
+"oluşturulacağını göreceğiz."
 
 #: src/methods-and-traits/traits/implementing.md
 msgid "\"Oh you're a cutie! What's your name? {}\""
@@ -6638,8 +6642,9 @@ msgid ""
 msgstr ""
 "Bu yaygın bir desendir: bir özellik gerçekleştirmesini (trait "
 "implementation) saran ve aynı özelliği gerçekleştiren, süreçte davranış "
-"ekleyen bir yapı (struct). \"Jenerikler\" bölümünde, sarmalayıcıyı (wrapper) "
-"sarılmış tür (wrapped type) üzerinde jenerik yapmayı göreceğiz."
+"ekleyen bir yapı (struct). \"Genelleştirmeler (Generics)\" bölümünde, "
+"sarmalayıcıyı (wrapper) sarılmış tür (wrapped type) üzerinde genelleştirmeyi "
+"(generic) göreceğiz."
 
 #: src/methods-and-traits/exercise.md src/methods-and-traits/solution.md
 #: src/generics/generic-data.md src/closures/exercise.md
@@ -6685,7 +6690,7 @@ msgstr "dyn Trait"
 
 #: src/generics.md
 msgid "Exercise: Generic min"
-msgstr "Alıştırma: Jenerik min"
+msgstr "Alıştırma: Genelleştirilmiş min"
 
 #: src/generics/generic-functions.md
 msgid ""
@@ -6694,7 +6699,7 @@ msgid ""
 msgstr ""
 "Rust, algoritmaları veya veri yapılarını (sıralama veya ikili ağaç gibi) "
 "kullanılan veya depolanan türler üzerinde soyutlamanıza olanak tanıyan "
-"jenerikleri (generics) destekler."
+"genelleştirmeleri (generics) destekler."
 
 #: src/generics/generic-functions.md
 msgid "\"picked a number: {:?}\""
@@ -6719,10 +6724,11 @@ msgid ""
 "reduce code duplication, or after talking about generics to show how "
 "monomorphization works."
 msgstr ""
-"Jeneriklerin kod tekrarını nasıl azaltabileceğini göstermek için jenerik "
-"`pick`'ten önce veya jeneriklerden sonra tek biçimli hâle getirmenin "
-"(monomorphization) nasıl çalıştığını göstermek için `pick`'in tek biçimli "
-"hâle getirilmiş (monomorphized) sürümlerini göstermek faydalı olabilir."
+"Genelleştirmelerin (generics) kod tekrarını nasıl azaltabileceğini göstermek "
+"için genelleştirilmiş `pick`'ten önce veya genelleştirmelerden sonra tek "
+"biçimli hâle getirmenin (monomorphization) nasıl çalıştığını göstermek için "
+"`pick`'in tek biçimli hâle getirilmiş (monomorphized) sürümlerini göstermek "
+"faydalı olabilir."
 
 #: src/generics/generic-functions.md
 msgid ""
@@ -6749,12 +6755,12 @@ msgid ""
 "if `cond` is false. Even if only the `pick` instantiation with integers is "
 "used, Rust still considers it invalid. C++ would let you do this."
 msgstr ""
-"Bu, C++ şablonlarına (templates) benzer, ancak Rust, jenerik fonksiyonu "
-"kısmen de olsa anında derler, bu nedenle bu fonksiyon kısıtlamalarla "
-"(constraints) eşleşen tüm türler için geçerli olmalıdır. Örneğin, `cond` "
-"yanlışsa `left + right` geri döndürmek için `pick`'i değiştirmeyi deneyin. "
-"Yalnızca tamsayılarla `pick` örneği kullanılsa bile, Rust bunu yine de "
-"geçersiz kabul eder. C++ bunu yapmanıza izin verirdi."
+"Bu, C++ şablonlarına (templates) benzer, ancak Rust, genelleştirilmiş "
+"(generic) fonksiyonu kısmen de olsa anında derler, bu nedenle bu fonksiyon "
+"kısıtlamalarla (constraints) eşleşen tüm türler için geçerli olmalıdır. "
+"Örneğin, `cond` yanlışsa `left + right` geri döndürmek için `pick`'i "
+"değiştirmeyi deneyin. Yalnızca tamsayılarla `pick` örneği kullanılsa bile, "
+"Rust bunu yine de geçersiz kabul eder. C++ bunu yapmanıza izin verirdi."
 
 #: src/generics/generic-functions.md
 msgid ""
@@ -6762,19 +6768,19 @@ msgid ""
 "is a zero-cost abstraction: you get exactly the same result as if you had "
 "hand-coded the data structures without the abstraction."
 msgstr ""
-"Jenerik (genel) kod, çağrıldığı yerlere (call sites) göre jenerik olmayan "
-"(özelleştirilmiş) koda dönüştürülür. Bu, sıfır maliyetli bir soyutlamadır: "
-"soyutlama olmadan veri yapılarını elle kodlamış olsaydınız alacağınız "
-"sonucun aynısını elde edersiniz."
+"Genelleştirilmiş (generic) kod, çağrıldığı yerlerde (call sites) "
+"genelleştirilmemiş (özelleştirilmiş) koda dönüştürülür. Bu, sıfır maliyetli "
+"bir soyutlamadır: soyutlama olmadan veri yapılarını elle kodlamış olsaydınız "
+"alacağınız sonucun aynısını elde edersiniz."
 
 #: src/generics/trait-bounds.md
 msgid ""
 "When working with generics, you often want to require the types to implement "
 "some trait, so that you can call this trait's methods."
 msgstr ""
-"Jeneriklerle (generics) çalışırken, genellikle türlerin bazı özellikleri "
-"(trait) gerçekleştirmesini (implement) istersiniz, böylece bu özelliğin "
-"metotlarını çağırabilirsiniz."
+"Genelleştirmelerle (generics) çalışırken, genellikle türlerin bazı "
+"özellikleri (trait) gerçekleştirmesini (implement) istersiniz, böylece bu "
+"özelliğin metotlarını çağırabilirsiniz."
 
 #: src/generics/trait-bounds.md
 msgid "You can do this with `T: Trait`:"
@@ -6831,8 +6837,8 @@ msgid ""
 "the exercise for the previous segment:"
 msgstr ""
 "Belirli alan türü (concrete field type) üzerinde soyutlama yapmak için "
-"jenerikleri (generics) kullanabilirsiniz. Önceki bölümün alıştırmasına geri "
-"dönersek:"
+"genelleştirmeleri (generics) kullanabilirsiniz. Önceki bölümün alıştırmasına "
+"geri dönersek:"
 
 #: src/generics/generic-data.md
 msgid ""
@@ -6847,8 +6853,9 @@ msgid ""
 "This is because it is a generic implementation section for generic type. "
 "They are independently generic."
 msgstr ""
-"Bunun nedeni, jenerik (generic) tür için jenerik bir gerçekleştirme bölümü "
-"(generic implementation section) olmasıdır. Bağımsız olarak jeneriktirler."
+"Bunun nedeni, genelleştirilmiş (generic) tür için genel bir gerçekleştirme "
+"bölümü (generic implementation section) olmasıdır. Onlar, bağımsız olarak "
+"genelleştirilmiştir (generic)."
 
 #: src/generics/generic-data.md
 msgid "It means these methods are defined for any `L`."
@@ -6864,8 +6871,8 @@ msgid ""
 "but methods in this block will only be available for "
 "`VerbosityFilter<StderrLogger>`."
 msgstr ""
-"`VerbosityFilter` hala jeneriktir ve `VerbosityFilter<f64>` "
-"kullanabilirsiniz, ancak bu bloktaki metotlar yalnızca "
+"`VerbosityFilter` hala genelleştirilmiştir türdür ve `VerbosityFilter<f64>` "
+"türünü kullanabilirsiniz, ancak bu bloktaki metotlar yalnızca "
 "`VerbosityFilter<StderrLogger>` için mevcut olacaktır."
 
 #: src/generics/generic-data.md
@@ -6886,11 +6893,11 @@ msgid ""
 "(https://doc.rust-lang.org/std/convert/trait.From.html) trait is used to "
 "define type conversions:"
 msgstr ""
-"Özellikler (traits), tıpkı türler ve fonksiyonlar gibi jenerik (generic) de "
-"olabilir. Bir özelliğin parametreleri, kullanıldığında belirli (concrete) "
-"türler alır. Örneğin, [`From<T>`](https://doc.rust-lang.org/std/convert/"
-"trait.From.html) özelliği tür dönüşümlerini (type conversions) tanımlamak "
-"için kullanılır:"
+"Özellikler (traits), tıpkı türler ve fonksiyonlar gibi genelleştirilmiş "
+"(generic) de olabilir. Bir özelliğin parametreleri, kullanıldığında belirli "
+"(concrete) türler alır. Örneğin, [`From<T>`](https://doc.rust-lang.org/std/"
+"convert/trait.From.html) özelliği tür dönüşümlerini (type conversions) "
+"tanımlamak için kullanılır:"
 
 #: src/generics/generic-traits.md
 msgid "\"Converted from integer: {from}\""
@@ -6926,10 +6933,10 @@ msgid ""
 "\"output\" type. A trait can have multiple implementations for different "
 "input types."
 msgstr ""
-"Jenerik (generic) özellikler (traits) türleri \"girdi\" olarak alırken, "
-"ilişkili türler (associated types) bir tür \"çıktı\" türüdür. Bir özelliğin "
-"farklı girdi türleri için birden çok gerçekleştirmesi (implementation) "
-"olabilir."
+"Genelleştirilmiş (generic) özellikler (traits) türleri \"girdi\" olarak "
+"alırken, ilişkili türler (associated types) bir tür \"çıktı\" türüdür. Bir "
+"özelliğin farklı girdi türleri için birden çok gerçekleştirmesi "
+"(implementation) olabilir."
 
 #: src/generics/generic-traits.md
 msgid ""
@@ -6976,7 +6983,7 @@ msgid ""
 "trait bound."
 msgstr ""
 "Bir parametre için, `impl Trait` bir özellik sınırına (trait bound) sahip "
-"anonim bir jenerik (generic) parametre gibidir."
+"anonim bir genelleştirilmiş (generic) parametre gibidir."
 
 #: src/generics/impl-trait.md
 msgid ""
@@ -7000,11 +7007,11 @@ msgid ""
 msgstr ""
 "Geri dönüş konumunda (return position) çıkarım (inference) yapmak zordur. "
 "`impl Foo` geri döndüren bir fonksiyon, geri döndürdüğü belirli olan türü "
-"kaynakta yazmadan seçer. `collect<B>() -> B` gibi jenerik bir tür döndüren "
-"bir fonksiyon, `B`'yi sağlayan herhangi bir türü geri döndürebilir ve "
-"çağıranın, `let x: Vec<_> = foo.collect()` veya tür belirteciyle (turbo "
-"balığı / turbofish) ile `foo.collect::<Vec<_>>()` gibi birini seçmesi "
-"gerekebilir."
+"kaynakta yazmadan seçer. `collect<B>() -> B` gibi genelleştirilmiş bir tür "
+"geri döndüren bir fonksiyon, `B`'yi sağlayan herhangi bir türü geri "
+"döndürebilir ve çağıranın, `let x: Vec<_> = foo.collect()` veya tür "
+"belirteciyle (turbo balığı / turbofish) ile `foo.collect::<Vec<_>>()` gibi "
+"birini seçmesi gerekebilir."
 
 #: src/generics/impl-trait.md
 msgid ""
@@ -7019,9 +7026,9 @@ msgid ""
 "In addition to using traits for static dispatch via generics, Rust also "
 "supports using them for type-erased, dynamic dispatch via trait objects:"
 msgstr ""
-"Rust, jenerikler (generics) yoluyla statik yönlendirme (static dispatch) "
-"için özellikleri (trait) kullanmaya ek olarak, özellik nesneleri (trait "
-"objects) yoluyla silinmiş türle (type-erased), dinamik yönlendirmeyi "
+"Rust, genelleştirmeler (generics) yoluyla statik yönlendirme (static "
+"dispatch) için özellikleri (trait) kullanmaya ek olarak, özellik nesneleri "
+"(trait objects) yoluyla silinmiş türle (type-erased), dinamik yönlendirmeyi "
 "(dynamic dispatch) destekler:"
 
 #: src/generics/dyn-trait.md src/smart-pointers/trait-objects.md
@@ -7031,7 +7038,7 @@ msgstr "\"Miyav!\""
 #: src/generics/dyn-trait.md
 msgid "// Uses generics and static dispatch.\n"
 msgstr ""
-"// Jenerikleri (generics) ve statik yönlendirmeyi (static dispatch) "
+"// Genelleştirmeleri (generics) ve statik yönlendirmeyi (static dispatch) "
 "kullanır.\n"
 
 #: src/generics/dyn-trait.md src/smart-pointers/trait-objects.md
@@ -7053,13 +7060,13 @@ msgid ""
 "full type information and can resolve which type's trait implementation to "
 "use."
 msgstr ""
-"`impl Trait` de dahil olmak üzere jenerikler (generics), jeneriğin "
-"oluşturulduğu her farklı tür için fonksiyonun özel bir örneğini oluşturmak "
-"üzere tek biçimli hâle getirmeyi (monomorphization) kullanır. Bu, jenerik "
-"bir fonksiyon içinden bir özellik (trait) metodunu çağırmanın hala statik "
-"yönlendirme (static dispatch) kullandığı anlamına gelir, çünkü derleyici tam "
-"tür bilgisine sahiptir ve hangi türün özellik gerçekleştiriminin (trait "
-"implementation) kullanılacağını çözebilir."
+"`impl Trait` de dahil olmak üzere genelleştirmeler (generics), "
+"genelleştirmenin oluşturulduğu her farklı tür için fonksiyonun özel bir "
+"örneğini oluşturmak üzere tek biçimli hâle getirmeyi (monomorphization) "
+"kullanır. Bu, genelleştirilmiş bir fonksiyon içinden bir özellik (trait) "
+"metodunu çağırmanın hala statik yönlendirme (static dispatch) kullandığı "
+"anlamına gelir, çünkü derleyici tam tür bilgisine sahiptir ve hangi türün "
+"özellik gerçekleştiriminin (trait implementation) kullanılacağını çözebilir."
 
 #: src/generics/dyn-trait.md
 msgid ""
@@ -7122,7 +7129,8 @@ msgid ""
 msgstr ""
 "Bu kısa alıştırmada, [`Ord`](https://doc.rust-lang.org/stable/std/cmp/trait."
 "Ord.html) özelliğini (trait) kullanarak iki değerin minimumunu belirleyen "
-"jenerik (generic) bir `min` fonksiyonu gerçekleştireceksiniz (implement)."
+"genelleştirilmiş (generic) bir `min` fonksiyonu gerçekleştireceksiniz "
+"(implement)."
 
 #: src/generics/exercise.md
 msgid "// TODO: implement the `min` function used in the tests.\n"
@@ -22789,7 +22797,9 @@ msgstr ""
 #~ "edildiği (heap-allocated) sahipli (owned) bir arabellektir (buffer)"
 
 #~ msgid "[Named Structs](./user-defined-types/named-structs.md) (10 minutes)"
-#~ msgstr "[İsimli Yapılar](./user-defined-types/named-structs.md) (10 dakika)"
+#~ msgstr ""
+#~ "[İsimli Yapılar (Named Structs)](./user-defined-types/named-structs.md) "
+#~ "(10 dakika)"
 
 #~ msgid "[Tuple Structs](./user-defined-types/tuple-structs.md) (10 minutes)"
 #~ msgstr "[Demet Yapıları](./user-defined-types/tuple-structs.md) (10 dakika)"
