@@ -19,17 +19,15 @@
 //! `cargo xtask install-tools` and the logic defined here will install
 //! the tools.
 
-use anyhow::{Ok, Result, anyhow};
-use clap::{Parser, ValueEnum};
-use std::path::Path;
-use std::{env, process::Command};
+use anyhow::{Context, Result, anyhow};
+use clap::{Parser, Subcommand};
+use std::path::{Path, PathBuf};
+use std::process::Command;
+use std::{env, fs};
+use walkdir::WalkDir;
 
 fn main() -> Result<()> {
-    if let Err(e) = execute_task() {
-        eprintln!("{e}");
-        std::process::exit(-1);
-    }
-    Ok(())
+    execute_task()
 }
 
 #[derive(Parser)]
@@ -38,160 +36,352 @@ fn main() -> Result<()> {
 )]
 struct Cli {
     /// The task to execute
-    #[arg(value_enum)]
+    #[command(subcommand)]
     task: Task,
 }
 
-#[derive(Copy, Clone, PartialEq, Eq, PartialOrd, Ord, ValueEnum)]
+#[derive(Subcommand)]
 enum Task {
     /// Installs the tools the project depends on.
-    InstallTools,
+    InstallTools {
+        /// Use cargo-binstall for faster installation.
+        #[arg(long)]
+        binstall: bool,
+    },
     /// Runs the web driver tests in the tests directory.
-    WebTests,
+    WebTests {
+        /// Optional 'book html' directory - if set, will also refresh the list
+        /// of slides used by slide size test.
+        #[arg(short, long)]
+        dir: Option<PathBuf>,
+    },
+    /// (Re)creates the slides.list.ts file based on the given book html
+    /// directory.
+    CreateSlideList {
+        /// The book html directory
+        #[arg(short, long)]
+        dir: PathBuf,
+    },
     /// Tests all included Rust snippets.
     RustTests,
     /// Starts a web server with the course.
-    Serve,
-    /// Create a static version of the course in the `book/` directory.
-    Build,
+    Serve {
+        /// ISO 639 language code (e.g. da for the Danish translation).
+        #[arg(short, long)]
+        language: Option<String>,
+
+        /// Directory to place the build. If not provided, defaults to the book/
+        /// directory (or the book/xx directory if a language is provided).
+        #[arg(short, long)]
+        output: Option<PathBuf>,
+    },
+    /// Create a static version of the course.
+    Build {
+        /// ISO 639 language code (e.g. da for the Danish translation).
+        #[arg(short, long)]
+        language: Option<String>,
+
+        /// Directory to place the build. If not provided, defaults to the book/
+        /// directory (or the book/xx directory if a language is provided).
+        #[arg(short, long)]
+        output: Option<PathBuf>,
+    },
 }
 
 fn execute_task() -> Result<()> {
     let cli = Cli::parse();
     match cli.task {
-        Task::InstallTools => install_tools()?,
-        Task::WebTests => run_web_tests()?,
-        Task::RustTests => run_rust_tests()?,
-        Task::Serve => start_web_server()?,
-        Task::Build => build()?,
+        Task::InstallTools { binstall } => install_tools(binstall),
+        Task::WebTests { dir } => run_web_tests(dir),
+        Task::CreateSlideList { dir } => create_slide_list(dir),
+        Task::RustTests => run_rust_tests(),
+        Task::Serve { language, output } => start_web_server(language, output),
+        Task::Build { language, output } => build(language, output),
+    }
+}
+
+/// Executes a command and returns an error if it fails.
+fn run_command(cmd: &mut Command) -> Result<()> {
+    let command_display = format!("{cmd:?}");
+    println!("> {command_display}");
+    let status = cmd
+        .status()
+        .with_context(|| format!("Failed to execute command: {command_display}"))?;
+    if !status.success() {
+        let exit_description = if let Some(code) = status.code() {
+            format!("exited with status code: {}", code)
+        } else {
+            "was terminated by a signal".to_string()
+        };
+        return Err(anyhow!("Command `{command_display}` {exit_description}"));
     }
     Ok(())
 }
 
-fn install_tools() -> Result<()> {
+fn install_tools(binstall: bool) -> Result<()> {
     println!("Installing project tools...");
 
-    let path_to_mdbook_exerciser =
-        Path::new(env!("CARGO_WORKSPACE_DIR")).join("mdbook-exerciser");
-    let path_to_mdbook_course =
-        Path::new(env!("CARGO_WORKSPACE_DIR")).join("mdbook-course");
+    let cargo = env!("CARGO");
 
-    let install_args = vec![
-        // The --locked flag is important for reproducible builds. It also
-        // avoids breakage due to skews between mdbook and mdbook-svgbob.
-        vec!["mdbook", "--locked", "--version", "0.4.48"],
-        vec!["mdbook-svgbob", "--locked", "--version", "0.2.2"],
-        vec!["mdbook-pandoc", "--locked", "--version", "0.10.4"],
-        vec!["mdbook-i18n-helpers", "--locked", "--version", "0.3.6"],
-        vec!["i18n-report", "--locked", "--version", "0.2.0"],
-        vec!["mdbook-linkcheck2", "--locked", "--version", "0.9.1"],
-        // Mdbook-exerciser and mdbook-course are located in this repository.
-        // To make it possible to install them from any directory we need to
-        // specify their path from the workspace root.
-        vec!["--path", path_to_mdbook_exerciser.to_str().unwrap(), "--locked"],
-        vec!["--path", path_to_mdbook_course.to_str().unwrap(), "--locked"],
+    let install_command = if binstall { "binstall" } else { "install" };
+
+    const PINNED_NIGHTLY: &str = "nightly-2025-09-01";
+
+    // Install rustup components
+    let rustup_steps = [
+        ["toolchain", "install", "--profile", "minimal", PINNED_NIGHTLY],
+        ["component", "add", "rustfmt", "--toolchain", PINNED_NIGHTLY],
+    ];
+    for args in rustup_steps {
+        let mut cmd = Command::new("rustup");
+        cmd.args(args);
+        run_command(&mut cmd)?;
+    }
+
+    // The --locked flag is important for reproducible builds.
+    let tools = [
+        ("mdbook", "0.4.52"),
+        ("mdbook-svgbob", "0.2.2"),
+        ("mdbook-pandoc", "0.10.4"),
+        ("mdbook-i18n-helpers", "0.3.6"),
+        ("i18n-report", "0.2.0"),
+        ("mdbook-linkcheck2", "0.9.1"),
     ];
 
-    for args in &install_args {
-        let status = Command::new(env!("CARGO"))
-            .arg("install")
-            .args(args)
-            .status()
-            .expect("Failed to execute cargo install");
+    for (tool, version) in tools {
+        let mut cmd = Command::new(cargo);
+        cmd.args([install_command, tool, "--version", version, "--locked"]);
+        run_command(&mut cmd)?;
+    }
 
-        if !status.success() {
-            let error_message = format!(
-                "Command 'cargo install {}' exited with status code: {}",
-                args.join(" "),
-                status.code().unwrap()
-            );
-            return Err(anyhow!(error_message));
+    // Install local tools from the workspace.
+    let workspace_dir = Path::new(env!("CARGO_WORKSPACE_DIR"));
+    // cargo-binstall does not support --path, so we always use cargo install here.
+    let local_tools = ["mdbook-exerciser", "mdbook-course"];
+    for tool in local_tools {
+        let mut cmd = Command::new(cargo);
+        cmd.args(["install", "--path"])
+            .arg(workspace_dir.join(tool))
+            .arg("--locked");
+        run_command(&mut cmd)?;
+    }
+
+    // Uninstall original linkcheck if currently installed (see issue no 2773)
+    uninstall_mdbook_linkcheck()?;
+
+    Ok(())
+}
+
+fn uninstall_mdbook_linkcheck() -> Result<()> {
+    println!("Uninstalling old mdbook-linkcheck if installed...");
+    let output = Command::new(env!("CARGO"))
+        .args(["uninstall", "mdbook-linkcheck"])
+        .output()
+        .context("Failed to execute `cargo uninstall mdbook-linkcheck`")?;
+
+    if !output.status.success() {
+        let stderr = String::from_utf8_lossy(&output.stderr);
+        // This specific error is OK, it just means the package wasn't installed.
+        if !stderr.contains("did not match any packages") {
+            return Err(anyhow!(
+                "Failed to uninstall `mdbook-linkcheck`.\n--- stderr:\n{stderr}"
+            ));
+        }
+        println!("mdbook-linkcheck not installed. Continuing...");
+    }
+    Ok(())
+}
+
+fn run_web_tests(dir: Option<PathBuf>) -> Result<()> {
+    println!("Running web tests...");
+    let workspace_dir = Path::new(env!("CARGO_WORKSPACE_DIR"));
+
+    let absolute_dir = dir.map(|d| d.canonicalize()).transpose()?;
+
+    if let Some(d) = &absolute_dir {
+        println!("Refreshing slide lists...");
+        create_slide_list(d.clone())?;
+    }
+
+    let tests_dir = workspace_dir.join("tests");
+    let mut cmd = Command::new("npm");
+    cmd.current_dir(tests_dir).arg("test");
+
+    if let Some(d) = absolute_dir {
+        cmd.env("TEST_BOOK_DIR", d);
+    }
+    run_command(&mut cmd)
+}
+
+// Creates a list of .html slides from the html directory containing the
+// index.html to check the slides.
+// - CI environment: Only modified files are listed
+// - Otherwise: All existing html files
+fn create_slide_list(html_directory: PathBuf) -> Result<()> {
+    let workspace_dir = Path::new(env!("CARGO_WORKSPACE_DIR"));
+    let tests_dir = workspace_dir.join("tests");
+
+    // Check if the provided directory is correct
+    if !html_directory.join("index.html").exists() {
+        return Err(anyhow!(
+            "Could not find index.html in {}. Please check if the correct directory is used (e.g. book/html).",
+            html_directory.display()
+        ));
+    }
+
+    // These special slides are not checked against the style guide
+    let exclude_paths = [
+        "exercise.html",
+        "solution.html",
+        "toc.html",
+        "print.html",
+        "404.html",
+        "glossary.html",
+        "index.html",
+        "course-structure.html",
+    ]
+    .map(PathBuf::from);
+
+    // Collect the files relevant for evaluation.
+    // - CI environment variable is set: all modified markdown files in the src/
+    //   directory
+    // - all html files in the provided directory otherwise
+    let candidate_slides: Vec<PathBuf> = if env::var("CI").is_ok() {
+        println!("CI environment detected, checking only modified slides.");
+        // GITHUB_BASE_REF is available in PRs. Default to 'main' for other CI
+        // contexts.
+        let base_ref = env::var("GITHUB_BASE_REF").unwrap_or("main".to_string());
+        let mut cmd = Command::new("git");
+        cmd.arg("diff")
+            .arg("--name-only")
+            .arg(format!("{}...", base_ref))
+            .arg("--")
+            // Retrieve all modified files in the src directory.
+            // Pathspec syntax: https://git-scm.com/docs/gitglossary#Documentation/gitglossary.txt-pathspec
+            // `*` can match path separators, thus matches also files in
+            // subdirectories
+            .arg("src/*.md");
+        println!("> {cmd:?}");
+        let output = cmd.output().context("Failed to run git diff")?;
+        String::from_utf8(output.stdout)?
+            .lines()
+            .map(|line| {
+                let path = Path::new(line);
+                // We know the path starts with "src/" because of the pathspec in the
+                // `git diff` command, and we need it relative to the html base
+                // directory
+                let stripped_path = path.strip_prefix("src").unwrap();
+                let mut html_path = stripped_path.to_path_buf();
+                // replace the .md extension with .html
+                html_path.set_extension("html");
+                html_path
+            })
+            .collect()
+    } else {
+        println!("Local environment, checking all slides.");
+        WalkDir::new(&html_directory)
+            .into_iter()
+            .filter_map(|e| e.ok())
+            // only files with .html extension
+            .filter(|e| e.path().extension().is_some_and(|ext| ext == "html"))
+            // relative path inside the html directory
+            .map(|e| e.path().strip_prefix(&html_directory).unwrap().to_path_buf())
+            .collect()
+    };
+    // Filter the candidate slides
+    let mut slides = Vec::new();
+    for slide in candidate_slides {
+        // Skip excluded files
+        if exclude_paths.iter().any(|exclude_path| slide.ends_with(exclude_path)) {
+            continue;
+        }
+
+        // Test if the html files actually exist
+        let full_path = html_directory.join(&slide);
+        if !full_path.exists() {
+            continue;
+        }
+
+        // Optimization: check if these are redirection html files and skip these
+        let content = fs::read_to_string(&full_path)
+            .with_context(|| format!("Failed to read slide: {}", slide.display()))?;
+        if content.contains("Redirecting to...") {
+            continue;
+        }
+        slides.push(slide);
+    }
+
+    if env::var("CI").is_ok() {
+        println!("The following slides have been modified and will be checked:");
+        for slide in &slides {
+            println!("{}", slide.display());
         }
     }
 
-    Ok(())
-}
-
-fn run_web_tests() -> Result<()> {
-    println!("Running web tests...");
-
-    let path_to_tests_dir = Path::new(env!("CARGO_WORKSPACE_DIR")).join("tests");
-
-    let status = Command::new("npm")
-        .current_dir(path_to_tests_dir.to_str().unwrap())
-        .arg("test")
-        .status()
-        .expect("Failed to execute npm test");
-
-    if !status.success() {
-        let error_message = format!(
-            "Command 'cargo xtask web-tests' exited with status code: {}",
-            status.code().unwrap()
-        );
-        return Err(anyhow!(error_message));
+    // Write the file list into a .ts file that can be read by the JS based webtest
+    let output_path = tests_dir.join("src").join("slides").join("slides.list.ts");
+    let mut output_content = "export const slides = [\n".to_string();
+    for slide in slides {
+        output_content.push_str(&format!("  \"{}\",\n", slide.display()));
     }
+    output_content.push_str("];\n");
+
+    fs::write(&output_path, output_content)
+        .with_context(|| format!("Failed to write to {}", output_path.display()))?;
 
     Ok(())
 }
 
 fn run_rust_tests() -> Result<()> {
     println!("Running rust tests...");
+    let workspace_root = Path::new(env!("CARGO_WORKSPACE_DIR"));
 
-    let path_to_workspace_root = Path::new(env!("CARGO_WORKSPACE_DIR"));
-
-    let status = Command::new("mdbook")
-        .current_dir(path_to_workspace_root.to_str().unwrap())
-        .arg("test")
-        .status()
-        .expect("Failed to execute mdbook test");
-
-    if !status.success() {
-        let error_message = format!(
-            "Command 'cargo xtask rust-tests' exited with status code: {}",
-            status.code().unwrap()
-        );
-        return Err(anyhow!(error_message));
-    }
-
-    Ok(())
+    let mut cmd = Command::new("mdbook");
+    cmd.current_dir(workspace_root).arg("test");
+    run_command(&mut cmd)
 }
 
-fn start_web_server() -> Result<()> {
+fn run_mdbook_command(
+    subcommand: &str,
+    language: Option<String>,
+    output_arg: Option<PathBuf>,
+) -> Result<()> {
+    let workspace_root = Path::new(env!("CARGO_WORKSPACE_DIR"));
+
+    let mut cmd = Command::new("mdbook");
+    cmd.current_dir(workspace_root).arg(subcommand);
+
+    if let Some(language) = &language {
+        println!("Language: {language}");
+        cmd.env("MDBOOK_BOOK__LANGUAGE", language);
+    }
+
+    cmd.arg("-d");
+    cmd.arg(get_output_dir(language, output_arg));
+
+    run_command(&mut cmd)
+}
+
+fn start_web_server(
+    language: Option<String>,
+    output_arg: Option<PathBuf>,
+) -> Result<()> {
     println!("Starting web server ...");
-    let path_to_workspace_root = Path::new(env!("CARGO_WORKSPACE_DIR"));
-
-    let status = Command::new("mdbook")
-        .current_dir(path_to_workspace_root.to_str().unwrap())
-        .arg("serve")
-        .status()
-        .expect("Failed to execute mdbook serve");
-
-    if !status.success() {
-        let error_message = format!(
-            "Command 'cargo xtask serve' exited with status code: {}",
-            status.code().unwrap()
-        );
-        return Err(anyhow!(error_message));
-    }
-    Ok(())
+    run_mdbook_command("serve", language, output_arg)
 }
 
-fn build() -> Result<()> {
+fn build(language: Option<String>, output_arg: Option<PathBuf>) -> Result<()> {
     println!("Building course...");
-    let path_to_workspace_root = Path::new(env!("CARGO_WORKSPACE_DIR"));
+    run_mdbook_command("build", language, output_arg)
+}
 
-    let status = Command::new("mdbook")
-        .current_dir(path_to_workspace_root.to_str().unwrap())
-        .arg("build")
-        .status()
-        .expect("Failed to execute mdbook build");
-
-    if !status.success() {
-        let error_message = format!(
-            "Command 'cargo xtask build' exited with status code: {}",
-            status.code().unwrap()
-        );
-        return Err(anyhow!(error_message));
+fn get_output_dir(language: Option<String>, output_arg: Option<PathBuf>) -> PathBuf {
+    // If the 'output' arg is specified by the caller, use that, otherwise output to
+    // the 'book/' directory (or the 'book/xx' directory if a language was
+    // specified).
+    if let Some(d) = output_arg {
+        d
+    } else {
+        Path::new("book").join(language.unwrap_or("".to_string()))
     }
-    Ok(())
 }
