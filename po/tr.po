@@ -190,7 +190,7 @@ msgstr "Dizi Adımlama (Iteration)"
 #: src/SUMMARY.md src/tuples-and-arrays.md
 #: src/tuples-and-arrays/destructuring.md
 msgid "Patterns and Destructuring"
-msgstr "Desenler ve Çözümlenme (Destructuring)"
+msgstr "Desenler ve Ayrıştırma (Destructuring)"
 
 #: src/SUMMARY.md src/tuples-and-arrays.md src/tuples-and-arrays/exercise.md
 msgid "Exercise: Nested Arrays"
@@ -207,7 +207,7 @@ msgstr "Paylaşılan (Shared) Referanslar"
 
 #: src/SUMMARY.md src/references.md src/references/exclusive.md
 msgid "Exclusive References"
-msgstr "Özel (Exclusive) Referanslar"
+msgstr "Dışlayan (Exclusive) Referanslar"
 
 #: src/SUMMARY.md src/references.md src/references/slices.md
 msgid "Slices"
@@ -280,11 +280,11 @@ msgstr "Değerleri Eşleştirmek"
 
 #: src/SUMMARY.md src/pattern-matching.md
 msgid "Destructuring Structs"
-msgstr "Yapıların Çözümlenmesi (Destructuring Structs)"
+msgstr "Yapıları Ayrıştırma (Destructuring Structs)"
 
 #: src/SUMMARY.md src/pattern-matching.md
 msgid "Destructuring Enums"
-msgstr "Enum'ların Çözümlenmesi (Destructuring)"
+msgstr "Enum'ları Ayrıştırma (Destructuring)"
 
 #: src/SUMMARY.md src/pattern-matching.md
 #: src/pattern-matching/let-control-flow.md
@@ -828,7 +828,7 @@ msgstr "API'yi Değiştirme"
 
 #: src/SUMMARY.md
 msgid "Updating Implementations"
-msgstr "Uyarlamaları Güncellenme"
+msgstr "Gerçekleştirimleri (Implementations) Güncellenme"
 
 #: src/SUMMARY.md
 msgid "AIDL Types"
@@ -3890,8 +3890,7 @@ msgstr ""
 #: src/types-and-values/inference.md
 msgid "// ERROR: no implementation for `{float} == {integer}`\n"
 msgstr ""
-"// HATA: `{float} == {integer}` için gerçekleştirim-uyarlama "
-"(implementation) yok\n"
+"// HATA: `{float} == {integer}` için gerçekleştirim (implementation) yok\n"
 
 #: src/types-and-values/exercise.md
 msgid ""
@@ -4441,7 +4440,7 @@ msgid ""
 "Overloading is not supported -- each function has a single implementation."
 msgstr ""
 "Fonksiyon yüklemesi (overloading) desteklenmez -- her fonksiyonun tek bir "
-"uygulaması (implementation) vardır."
+"gerçekleştirimi (implementation) vardır."
 
 #: src/control-flow-basics/functions.md
 msgid ""
@@ -4498,8 +4497,8 @@ msgid ""
 "`todo!()` marks a bit of code as not-yet-implemented. If executed, it will "
 "panic."
 msgstr ""
-"`todo!()` kodun bir kısmını henüz uygulanmamış (not-yet-implemented) olarak "
-"işaretler. Eğer yürütülürse (execute), paniğe neden olur."
+"`todo!()` kodun bir kısmını henüz gerçekleştirilmemiş (not-yet-implemented) "
+"olarak işaretler. Eğer yürütülürse (execute), paniğe neden olur."
 
 #: src/control-flow-basics/macros.md
 msgid "\"{n}! = {}\""
@@ -4780,12 +4779,12 @@ msgid ""
 "here."
 msgstr ""
 "`println!` makrosu `?` biçim (format) parametresiyle hata ayıklama "
-"gerçekleştirimini/uyarlamasını (implementation) ister: `{}` varsayılan "
-"çıktıyı verir, `{:?}` hata ayıklama çıktısını verir. Tamsayılar (integer) ve "
-"dizeler (string) gibi türler varsayılan çıktıyı uygular (default output), "
-"ancak diziler (arrays) yalnızca hata ayıklama çıktısını (debug output) "
-"uygular. Bu, bahsi geçen kodda hata ayıklama çıktısını kullanmamız gerektiği "
-"anlamına gelir."
+"gerçekleştirimini (implementation) ister: `{}` varsayılan çıktıyı verir, "
+"`{:?}` hata ayıklama çıktısını verir. Tamsayılar (integer) ve dizeler "
+"(string) gibi türler varsayılan çıktıyı uygular (default output), ancak "
+"diziler (arrays) yalnızca hata ayıklama çıktısını (debug output) uygular. "
+"Bu, bahsi geçen kodda hata ayıklama çıktısını kullanmamız gerektiği anlamına "
+"gelir."
 
 #: src/tuples-and-arrays/arrays.md
 msgid ""
@@ -4873,7 +4872,7 @@ msgid ""
 "tuple into its constituent parts:"
 msgstr ""
 "Rust, bir demet (tuple) gibi daha büyük bir değeri, onu oluşturan parçalara "
-"çözümlemek (destructure) için desen eşleştirmeyi (pattern matching) "
+"ayrıştırmak (destructure) için desen eşleştirmeyi (pattern matching) "
 "kullanmayı destekler:"
 
 #: src/tuples-and-arrays/destructuring.md
@@ -4914,7 +4913,7 @@ msgid ""
 "pattern matching will be discussed in more detail later."
 msgstr ""
 "Rust ayrıca koşullu ifadelerde desenlerin (patterns) kullanılmasını "
-"destekleyerek eşitlik karşılaştırmasının (comparison) ve çözümlenmenin "
+"destekleyerek eşitlik karşılaştırmasının (comparison) ve ayrıştırmasının "
 "(destructuring) aynı anda gerçekleşmesine olanak tanır. Bu desen eşleştirme "
 "stili daha sonra daha ayrıntılı olarak tartışılacaktır."
 
@@ -5102,7 +5101,7 @@ msgid ""
 "Exclusive references, also known as mutable references, allow changing the "
 "value they refer to. They have type `&mut T`."
 msgstr ""
-"Değiştirilebilir referanslar (mutable reference) olarak da bilinen özel "
+"Değiştirilebilir referanslar (mutable reference) olarak da bilinen dışlayan "
 "(exclusive) referanslar, atıfta bulundukları (refer) değerin "
 "değiştirilmesine olanak tanır. Aynı zamanda, `&mut T` türüne sahiplerdir."
 
@@ -5114,11 +5113,12 @@ msgid ""
 "exists. Try making an `&point.0` or changing `point.0` while `x_coord` is "
 "alive."
 msgstr ""
-"\"Özel (exclusive)\", değere erişmek için yalnızca bu referansın "
-"kullanılabileceği anlamına gelir. Aynı anda başka hiçbir referans "
-"(paylaşılan veya özel olsun farketmez) mevcut olamaz ve özel referans "
-"(exclusive) varken atıfta bulunan değere erişilemez. `x_coord` hayattayken "
-"bir `&point.0` oluşturmayı veya `point.0`'ı değiştirmeyi deneyin."
+"\"Dışlayan (exclusive)\" kelimesinden kasıt, değere erişmek için yalnızca bu "
+"referansın kullanılabileceği, diğerlerinin dışlanacağıdır. Aynı anda başka "
+"hiçbir referans (paylaşılan veya dışlayan olsun farketmez) mevcut olamaz ve "
+"dışlayan referans (exclusive reference) varken atıfta bulunan değere "
+"erişilemez. `x_coord` hayattayken bir `&point.0` oluşturmayı veya "
+"`point.0`'ı değiştirmeyi deneyin."
 
 #: src/references/exclusive.md
 msgid ""
@@ -5130,7 +5130,7 @@ msgstr ""
 "`let mut x_coord: &i32` ve `let x_coord: &mut i32` arasındaki farka dikkat "
 "ettiğinizden emin olun. Birincisi, farklı değerlere bağlanabilen (bind) "
 "paylaşımlı bir referanstır (shared reference), ikincisi, değiştirilebilir "
-"bir değere (mutable value) özel bir referanstır (exclusive reference)."
+"bir değere (mutable value) dışlayan bir referanstır (exclusive reference)."
 
 #: src/references/slices.md
 msgid "A slice gives you a view into a larger collection:"
@@ -6149,8 +6149,8 @@ msgid ""
 "values. Let's review that and talk about a few other things patterns can "
 "express:"
 msgstr ""
-"1. günde, desenlerin bileşik değerlerini (compound values) _çözümlemek "
-"(destructure)_ için nasıl kullanılabileceğini kısaca görmüştük. Şimdi bunu "
+"1. günde, bileşik değere (compound values) _ayrıştırmak (destructure)_ için "
+"desenlerin (pattern) nasıl kullanılabileceğini kısaca görmüştük. Şimdi bunu "
 "gözden geçirelim ve desenlerin ifade edebileceği birkaç diğer şey hakkında "
 "konuşalım:"
 
@@ -6412,7 +6412,7 @@ msgid ""
 "it contains the full `Option::Some(123)`. This is rarely used but can be "
 "useful in more complex patterns."
 msgstr ""
-"Bu örnekte `inner`, çözümleme (destructuring) yoluyla `Option`'dan çektiği "
+"Bu örnekte `inner`, ayrıştırma (destructuring) yoluyla `Option`'dan çektiği "
 "123 değerine sahiptir, `outer` ise tüm `Some(inner)` ifadesini yakalar, bu "
 "nedenle tam `Option::Some(123)`'ü içerir. Bu nadiren kullanılır ancak daha "
 "karmaşık desenlerde faydalı olabilir."
@@ -6425,7 +6425,7 @@ msgstr "Yapılar (Structs)"
 msgid "Like tuples, structs can also be destructured by matching:"
 msgstr ""
 "Demetler (tuples) gibi, yapılar (structs) da eşleştirme (matching) yoluyla "
-"çözümlenebilir (destructured):"
+"ayrıştırılabilir. (destructured):"
 
 #: src/pattern-matching/destructuring-structs.md
 msgid "\"y = 2, x = {i:?}\""
@@ -6470,7 +6470,7 @@ msgid ""
 "references."
 msgstr ""
 "Aynı etki `match &mut foo` ile de meydana gelir: yakalanan (captures) "
-"değerler özel (exclusive) referanslar haline gelir."
+"değerler dışlayan (exclusive) referanslar haline gelir."
 
 #: src/pattern-matching/destructuring-structs.md
 msgid ""
@@ -6486,7 +6486,7 @@ msgstr ""
 #: src/pattern-matching/destructuring-enums.md
 msgid "Like tuples, enums can also be destructured by matching:"
 msgstr ""
-"Demetler (tuples) gibi, enum'lar da eşleştirme yoluyla çözümlenebilir "
+"Demetler (tuples) gibi, enum'lar da eşleştirme yoluyla ayrıştırılabilir "
 "(destructured):"
 
 #: src/pattern-matching/destructuring-enums.md
@@ -6517,7 +6517,7 @@ msgid ""
 "arm, `half` is bound to the value inside the `Ok` variant. In the second "
 "arm, `msg` is bound to the error message."
 msgstr ""
-"Burada `Result` değerini _çözümlemek (destructure)_ için kolları (arm) "
+"Burada `Result` değerini _ayrıştırmak (destructure)_ için kolları (arm) "
 "kullandık. İlk kolda, `half`, `Ok` varyantının içindeki değere bağlanır. "
 "İkinci kolda, `msg` hata mesajına bağlanır."
 
@@ -6829,7 +6829,8 @@ msgstr "// Alıcı (receiver) yok, statik bir metot\n"
 #: src/methods-and-traits/methods.md
 msgid "// Exclusive borrowed read-write access to self\n"
 msgstr ""
-"// self'e özel (exclusive) ödünç alınmış (borrowed) okuma-yazma erişimi\n"
+"// self'e dışlayacak olan (exclusive) ödünç alınmış (borrowed) okuma-yazma "
+"erişimi\n"
 
 #: src/methods-and-traits/methods.md
 msgid "// Shared and read-only borrowed access to self\n"
@@ -6847,7 +6848,7 @@ msgstr "\"Tur {idx}: {lap} sn\""
 
 #: src/methods-and-traits/methods.md
 msgid "// Exclusive ownership of self (covered later)\n"
-msgstr "// self'in özel (exclusive) sahipliği (daha sonra ele alınacak)\n"
+msgstr "// self'in dışlayan (exclusive) sahipliği (daha sonra ele alınacak)\n"
 
 #: src/methods-and-traits/methods.md
 msgid "\"Race {} is finished, total lap time: {}\""
@@ -7894,9 +7895,9 @@ msgid ""
 msgstr ""
 "Varsayılan olarak, çevreleyiciler (closures) dış kapsamdan (outer scope) her "
 "değişkeni, yapabildikleri en az talepkar erişim biçimiyle yakalarlar "
-"(mümkünse paylaşılan (shared) referansla, sonra özel (exclusive) referansla, "
-"sonra taşıma (move) ile). `move` anahtar kelimesi, değerle yakalamayı "
-"(move)zorlar."
+"(mümkünse paylaşılan (shared) referansla, sonra dışlayan (exclusive) "
+"referansla, sonra taşıma (move) ile). `move` anahtar kelimesi, değerle "
+"yakalamayı (move)zorlar."
 
 #: src/closures/traits.md
 msgid "Closure traits"
@@ -7995,9 +7996,9 @@ msgid ""
 "but not concurrently."
 msgstr ""
 "Bir `FnMut` (ör. `accumulate`) yakalanan değerleri (captured values) "
-"değiştirebilir. Çevreleyici (closure) nesnesine özel (exclusive) referans "
-"yoluyla erişilir, bu nedenle tekrar tekrar çağrılabilir ancak eş zamanlı "
-"olarak (concurrently) çağrılamaz."
+"değiştirebilir. Çevreleyici (closure) nesnesine dışlayan (exclusive) "
+"referans yoluyla erişilir, bu nedenle tekrar tekrar çağrılabilir ancak eş "
+"zamanlı olarak (concurrently) çağrılamaz."
 
 #: src/closures/traits.md
 msgid ""
@@ -9956,7 +9957,7 @@ msgid ""
 msgstr ""
 "Paylaşılan (shared) referanslar `Copy`/`Clone`'dur, değiştirilebilir "
 "(mutable) referanslar değildir. Bunun nedeni, Rust'ın değiştirilebilir "
-"referansların özel (exclusive) olmasını gerektirmesidir, bu nedenle "
+"referansların dışlayan (exclusive) olmasını gerektirmesidir, bu nedenle "
 "paylaşılan bir referansın kopyasını oluşturmak geçerli olsa da, "
 "değiştirilebilir bir referansın kopyasını oluşturmak Rust'ın ödünç alma "
 "(borrowing) kurallarını ihlal eder."
@@ -27428,7 +27429,7 @@ msgstr ""
 #~ msgid "Pattern matching: destructuring enums, structs, and arrays."
 #~ msgstr ""
 #~ "Desen eşleştirme: numaralandırmaların (enums), yapıların ve dizilerin "
-#~ "çözümlenmesi (destructuring)."
+#~ "ayrıştırılması (destructuring)."
 
 #~ msgid "\"Final x: {x}\""
 #~ msgstr "\"Son x: {x}\""
@@ -27867,7 +27868,8 @@ msgstr ""
 #~ msgstr "[Paylaşılan Referanslar](./references/shared.md) (10 dakika)"
 
 #~ msgid "[Exclusive References](./references/exclusive.md) (10 minutes)"
-#~ msgstr "[Özel Referanslar](./references/exclusive.md) (10 dakika)"
+#~ msgstr ""
+#~ "[Dışlayan (Exclusive) Referanslar](./references/exclusive.md) (10 dakika)"
 
 #~ msgid "[Slices: &\\[T\\]](./references/slices.md) (10 minutes)"
 #~ msgstr "[Dilimler: &\\[T\\]](../references/slices.md) (10 dakika)"
@@ -28120,7 +28122,7 @@ msgstr ""
 #~ msgstr "while let İfadeleri"
 
 #~ msgid "Destructuring Arrays"
-#~ msgstr "Dizilerin Çözümlenmesi"
+#~ msgstr "Dizileri Ayrıştırma"
 
 #~ msgid "Match Guards"
 #~ msgstr "Eşleşme Koşulları/Filtreleri"
