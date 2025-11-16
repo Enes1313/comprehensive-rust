@@ -9856,18 +9856,6 @@ msgstr ""
 "`clone`'un davranışı kullanıcı tanımlıdır, bu nedenle gerekirse özel "
 "klonlama mantığı gerçekleştirebilir."
 
-#: src/memory-management/clone.md
-msgid ""
-"`clone` generally performs a deep copy of the value, meaning that if you e."
-"g. clone an array, all of the elements of the array are cloned as well."
-msgstr ""
-
-#: src/memory-management/clone.md
-msgid ""
-"The behavior for `clone` is user-defined, so it can perform custom cloning "
-"logic if needed."
-msgstr ""
-
 #: src/memory-management/copy-types.md
 msgid ""
 "While move semantics are the default, certain types are copied by default:"
@@ -9961,14 +9949,6 @@ msgstr ""
 "paylaşılan bir referansın kopyasını oluşturmak geçerli olsa da, "
 "değiştirilebilir bir referansın kopyasını oluşturmak Rust'ın ödünç alma "
 "(borrowing) kurallarını ihlal eder."
-
-#: src/memory-management/copy-types.md
-msgid ""
-"Shared references are `Copy`/`Clone`, mutable references are not. This is "
-"because Rust requires that mutable references be exclusive, so while it's "
-"valid to make a copy of a shared reference, creating a copy of a mutable "
-"reference would violate Rust's borrowing rules."
-msgstr ""
 
 #: src/memory-management/drop.md
 msgid "The `Drop` Trait"
@@ -10614,17 +10594,6 @@ msgstr "\"{} {}\""
 #: src/concurrency/async-pitfalls/cancellation.md
 #: src/idiomatic/leveraging-the-type-system/typestate-pattern.md
 #: src/idiomatic/leveraging-the-type-system/typestate-pattern/typestate-example.md
-msgid "\"{}\""
-msgstr "\"{}\""
-
-#: src/smart-pointers/trait-objects.md
-msgid "\"{} {}\""
-msgstr ""
-
-#: src/smart-pointers/trait-objects.md src/modules/exercise.md
-#: src/modules/solution.md src/android/build-rules/library.md
-#: src/android/interoperability/cpp/rust-bridge.md
-#: src/concurrency/async-pitfalls/cancellation.md
 msgid "\"{}\""
 msgstr "\"{}\""
 
@@ -15194,19 +15163,6 @@ msgstr ""
 msgid ""
 "When you call functions in a foreign language, you're using a _foreign "
 "function interface_, also known as FFI."
-msgstr ""
-
-#: src/android/interoperability.md
-msgid ""
-"This is a key ability of Rust: compiled code becomes indistinguishable from "
-"compiled C or C++ code."
-msgstr ""
-
-#: src/android/interoperability.md
-msgid ""
-"Technically, we say that Rust can be compiled to the same [ABI](https://en."
-"wikipedia.org/wiki/Application_binary_interface) (application binary "
-"interface) as C code."
 msgstr ""
 
 #: src/android/interoperability.md
@@ -26716,13 +26672,6 @@ msgid ""
 "array:  \n"
 "A fixed-size collection of elements of the same type, stored contiguously in "
 "memory. See [Arrays](tuples-and-arrays/arrays.md)."
-msgstr ""
-
-#: src/glossary.md
-msgid ""
-"associated type:  \n"
-"A type associated with a specific trait. Useful for defining the "
-"relationship between types."
 msgstr ""
 
 #: src/glossary.md
